@@ -34,11 +34,11 @@ func main() {
 
 	clientStreamService.RegisterClientStreamServer(svr, &Server{})
 
-	conn, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	if err != nil {
 		panic(err)
 	}
 	fmt.Printf("Server listening at %s port...\n", port)
 
-	svr.Serve(conn)
+	svr.Serve(listener)
 }
